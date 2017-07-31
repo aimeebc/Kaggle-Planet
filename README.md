@@ -6,26 +6,26 @@ competition Planet: Understanding the Amazon from Space. This was a really inter
 competition to develop algorithms capable of attributing both weather and land uses
 labels to high resolution satellite images to help identify and understand deforestation
 in the Amazon basin. Further details of the competition
-can be found [at Kaggle.] (https://www.kaggle.com/c/planet-understanding-the-amazon-from-space)
+can be found [at Kaggle.](https://www.kaggle.com/c/planet-understanding-the-amazon-from-space)
 
 I joined kaggle and this competition 8 days before the deadline and chose my best
 results as my final submission. This was a fine tuned version of the Inception v3
 model with the weights loaded from Keras with tensorflow as the backend, using the
 jpgs as input in their full size, 256 by 256, with 3 colour channels. I performed 10-fold cross-validation to evaluate my model and selected the highest performing fold as my submission.
 
-I got started using the kernel recommended by the competition to [explore the data.] (https://www.kaggle.com/robinkraft/getting-started-with-the-data-now-with-docs). I ran
+I got started using the kernel recommended by the competition to [explore the data.](https://www.kaggle.com/robinkraft/getting-started-with-the-data-now-with-docs). I ran
 this locally and used this code as a basis for loading the data. First I built a simple
 convolutional neural network in Keras and trained it on the jpgs. I was
 unable to load the full sample into memory, so first I tested with a subset of the data, then I wrote a generator to load the data in batches (utilities/LoadData.py).
 
 While trying to select the optimum threshold value for class assignment based on the
-predicted probabilities I found a solution by [anokas on the kaggle forums] (https://www.kaggle.com/c/planet-understanding-the-amazon-from-space/discussion/32475) for optimising the thresholds based on f2 score, treating each class as independent. I implemented his
+predicted probabilities I found a solution by [anokas on the kaggle forums](https://www.kaggle.com/c/planet-understanding-the-amazon-from-space/discussion/32475) for optimising the thresholds based on f2 score, treating each class as independent. I implemented his
 optimisation (utilities/Optimisations.py) and with a simple convolutional neural network I was able to achieve an f2-score of 0.69, equivalent to the score to beat of the example submission,
 a reasonable starting point.
 
 When I looked to more complex pre-trained models to fine tune I selected the Inception v3
 model because I already had some familiarity with the model. To get started I followed the
-[Keras guidelines on fine-tuning the Inception v3 model] (https://keras.io/applications/) and
+[Keras guidelines on fine-tuning the Inception v3 model](https://keras.io/applications/) and
 adapted them to this particular problem. The recommendation was to tune only the two top
 inception modules, I tested tuning the top three and only the final module, but two indeed
 gave the best performance. With this model I was able to achieve a public leaderboard score
