@@ -13,7 +13,7 @@ results as my final submission. This was a fine tuned version of the Inception v
 model with the weights loaded from Keras with tensorflow as the backend, using the
 jpgs as input in their full size, 256 by 256, with 3 colour channels. I performed 10-fold cross-validation to evaluate my model and selected the highest performing fold as my submission.
 
-I got started using the kernel recommended by the competition to [explore the data.](https://www.kaggle.com/robinkraft/getting-started-with-the-data-now-with-docs). I ran
+I got started using the kernel recommended by the competition to [explore the data.](https://www.kaggle.com/robinkraft/getting-started-with-the-data-now-with-docs) I ran
 this locally and used this code as a basis for loading the data. First I built a simple
 convolutional neural network in Keras and trained it on the jpgs. I was
 unable to load the full sample into memory, so first I tested with a subset of the data, then I wrote a generator to load the data in batches (utilities/LoadData.py).
